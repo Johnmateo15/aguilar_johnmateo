@@ -94,6 +94,25 @@
 </head>
 <body>
     <h1>Welcome to View Page</h1>
+    
+    <div style="width: 80%; margin: 0 auto 30px auto; text-align: right;">
+        <a href="<?= site_url('user/create'); ?>" style="
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.3)'" 
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.2)'">
+            + Create New User
+        </a>
+    </div>
+    
     <table>
         <tr>
             <th>ID</th>
