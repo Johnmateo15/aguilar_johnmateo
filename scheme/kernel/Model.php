@@ -213,7 +213,8 @@ class Model {
         }
         
         $total = $this->db->count();
-        $results = $this->db->table($this->table)->limit($per_page, $offset)->get_all();
+        // Use Database::pagination to ensure correct LIMIT and OFFSET order per driver
+        $results = $this->db->table($this->table)->pagination($per_page, $page)->get_all();
         
         return [
             'data' => $results,

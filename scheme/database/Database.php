@@ -347,7 +347,7 @@ class Database {
      */
     public function count()
     {
-        return $this->raw("SELECT COUNT(*) AS count FROM {$this->table}" . $this->where)->fetch()['count'];
+        return $this->raw("SELECT COUNT(*) AS count FROM {$this->table}" . $this->where, $this->bindValues)->fetch()['count'];
     }
 
     /**
