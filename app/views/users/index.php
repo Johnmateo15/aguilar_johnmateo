@@ -9,33 +9,37 @@
 
   <style>
     body {
-      background: #eef3fb;
+      background: linear-gradient(135deg, #e8f0ff, #f7fbff);
       font-family: "Poppins", sans-serif;
       color: #333;
+      min-height: 100vh;
+      padding: 40px 0;
     }
 
     .dashboard-container {
       max-width: 1100px;
-      margin: 50px auto;
-      padding: 30px;
-      background: #fff;
+      margin: auto;
+      padding: 40px;
+      background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 25px rgba(0, 80, 200, 0.1);
     }
 
     .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 25px;
       border-bottom: 2px solid #e6ecf8;
+      margin-bottom: 25px;
       padding-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .dashboard-header h2 {
       font-size: 1.8em;
       font-weight: 700;
-      color: #0a47a9;
+      color: #0b56d0;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -45,28 +49,40 @@
       color: #0b56d0;
     }
 
-    .logout-btn {
-      padding: 10px 18px;
+    .header-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logout-btn,
+    .btn-create {
+      padding: 10px 20px;
       border: none;
-      border-radius: 8px;
-      background: #0b56d0;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #0b56d0, #0948b0);
       color: #fff;
       font-weight: 600;
       transition: 0.3s;
+      box-shadow: 0 3px 10px rgba(11, 86, 208, 0.25);
+      text-decoration: none;
     }
 
-    .logout-btn:hover {
+    .logout-btn:hover,
+    .btn-create:hover {
       background: #093d99;
+      transform: translateY(-2px);
     }
 
     .user-status {
       background: #f1f6ff;
       border: 1px solid #d5e3ff;
-      padding: 12px 18px;
+      padding: 14px 18px;
       border-radius: 12px;
       margin-bottom: 25px;
       color: #0b56d0;
       font-weight: 500;
+      box-shadow: 0 2px 6px rgba(11, 86, 208, 0.08);
     }
 
     .user-status.error {
@@ -76,37 +92,39 @@
     }
 
     .table-card {
-      background: #fafcff;
+      background: #f9fbff;
       border-radius: 15px;
       padding: 20px;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     }
 
     table {
       width: 100%;
       border-collapse: separate;
-      border-spacing: 0 8px;
+      border-spacing: 0 10px;
     }
 
     th {
-      background: #0b56d0;
+      background: linear-gradient(90deg, #0b56d0, #0948b0);
       color: #fff;
       text-transform: uppercase;
       font-weight: 600;
       padding: 12px;
       border: none;
+      border-radius: 8px 8px 0 0;
     }
 
     td {
-      background: #fff;
+      background: #ffffff;
       padding: 12px;
       border: none;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 60, 255, 0.05);
     }
 
     tr:hover td {
-      background: #f0f5ff;
+      background: #eef4ff;
+      transition: 0.2s;
     }
 
     a.btn-action {
@@ -121,36 +139,19 @@
     }
 
     a.btn-update {
-      background: #0b56d0;
+      background: linear-gradient(90deg, #0b56d0, #0948b0);
+      box-shadow: 0 3px 10px rgba(11, 86, 208, 0.25);
     }
     a.btn-update:hover {
       background: #093d99;
     }
 
     a.btn-delete {
-      background: #d22d3d;
+      background: linear-gradient(90deg, #d22d3d, #b31f2e);
+      box-shadow: 0 3px 10px rgba(210, 45, 61, 0.25);
     }
     a.btn-delete:hover {
-      background: #b31f2e;
-    }
-
-    .btn-create {
-      display: inline-block;
-      padding: 12px 25px;
-      border: none;
-      background: #0b56d0;
-      color: #fff;
-      font-size: 1em;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: 0.3s;
-      text-transform: uppercase;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-
-    .btn-create:hover {
-      background: #093d99;
+      background: #a51b29;
     }
 
     .search-form {
@@ -167,13 +168,14 @@
     }
 
     .search-form button {
-      background: #0b56d0;
+      background: linear-gradient(90deg, #0b56d0, #0948b0);
       border: none;
       color: #fff;
       font-weight: 600;
       border-radius: 8px;
       padding: 8px 18px;
       transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(11, 86, 208, 0.2);
     }
 
     .search-form button:hover {
@@ -183,7 +185,7 @@
     .pagination-container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 25px;
     }
   </style>
 </head>
@@ -195,7 +197,11 @@
         <i class="fa-solid fa-graduation-cap"></i>
         <?= ($logged_in_user['role'] === 'admin') ? 'Admin Dashboard' : 'User Dashboard'; ?>
       </h2>
-      <a href="<?= site_url('auth/logout'); ?>"><button class="logout-btn">Logout</button></a>
+
+      <div class="header-buttons">
+        <a href="<?= site_url('users/create'); ?>" class="btn-create">+ Create New User</a>
+        <a href="<?= site_url('auth/logout'); ?>" class="logout-btn">Logout</a>
+      </div>
     </div>
 
     <?php if(!empty($logged_in_user)): ?>
@@ -249,8 +255,6 @@
         <?php echo $page; ?>
       </div>
     </div>
-
-    <a href="<?= site_url('users/create'); ?>" class="btn-create">+ Create New User</a>
   </div>
 </body>
 </html>
