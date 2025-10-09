@@ -209,7 +209,9 @@
       </h2>
 
       <div class="header-buttons">
-        <a href="<?= site_url('users/create'); ?>" class="btn-create">+ Create New User</a>
+        <?php if (!empty($logged_in_user) && ($logged_in_user['role'] ?? 'user') === 'admin'): ?>
+          <a href="<?= site_url('users/create'); ?>" class="btn-create">+ Create New User</a>
+        <?php endif; ?>
         <a href="<?= site_url('auth/logout'); ?>" class="logout-btn">Logout</a>
       </div>
     </div>
