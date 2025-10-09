@@ -56,7 +56,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | LavaLust Version
 | -------------------------------------------------------------------
 */
-$config['VERSION']                 = '4.2.2';
+$config['VERSION']                 = '4.2.4';
 
 /*
 | -------------------------------------------------------------------
@@ -79,7 +79,7 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
-$config['base_url'] 				= '';
+$config['base_url'] 				= 'https://aguilar-johnmateo-1.onrender.com';
 
 /*
 |--------------------------------------------------------------------------

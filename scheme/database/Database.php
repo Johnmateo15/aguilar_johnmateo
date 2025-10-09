@@ -313,7 +313,7 @@ class Database {
                 return $stmt->rowCount();
             }
         } catch (Exception $e) {
-            throw new PDOException($e->getMessage() . '<div style="background-color:#000;color:#fff;padding:15px">Query: ' . $this->getSQL . '</div>');
+            throw new PDOException($e->getMessage() . 'Query: ' . $this->getSQL . '');
         }
     }
 
@@ -347,7 +347,7 @@ class Database {
      */
     public function count()
     {
-        return $this->raw("SELECT COUNT(*) AS count FROM {$this->table}" . $this->where, $this->bindValues)->fetch()['count'];
+        return $this->raw("SELECT COUNT(*) AS count FROM {$this->table}" . $this->where)->fetch()['count'];
     }
 
     /**

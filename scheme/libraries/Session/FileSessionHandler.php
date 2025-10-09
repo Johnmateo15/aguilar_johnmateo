@@ -78,15 +78,6 @@ class FileSessionHandler extends Session implements SessionHandlerInterface {
      * @return bool
      */
     public function open($save_path, $session_name): bool {
-        // Fallback if PHP passes empty save_path
-        if (empty($save_path)) {
-            $save_path = rtrim(config_item('sess_save_path'), '/\\');
-        }
-        // If still empty, use default runtime/sessions
-        if (empty($save_path)) {
-            $save_path = 'runtime/sessions';
-        }
-
         $this->save_path = $save_path;
         $this->file_path = $this->save_path.DIRECTORY_SEPARATOR.$session_name . '_';
         if ( !is_dir($this->save_path) ) {
