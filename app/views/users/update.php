@@ -15,7 +15,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #eef3fb, #f9fbff);
+      background: linear-gradient(135deg, #dfe6ff, #f5eaff);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,7 +27,7 @@
       padding: 40px 35px;
       background: #ffffff;
       border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 25px rgba(88, 86, 208, 0.15);
       text-align: center;
       animation: fadeIn 0.7s ease;
     }
@@ -38,7 +38,7 @@
     }
 
     .form-card h1 {
-      background: linear-gradient(90deg, #0b56d0, #1d7af2);
+      background: linear-gradient(90deg, #6c1fe9ff, #1e88e5);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-size: 2em;
@@ -57,7 +57,7 @@
       padding: 12px 14px 12px 42px;
       font-size: 1em;
       color: #333;
-      background: #f9fbff;
+      background: #f9f9ff;
       border: 1px solid #cfd9eb;
       border-radius: 10px;
       outline: none;
@@ -66,8 +66,8 @@
 
     .form-group input:focus,
     .form-group select:focus {
-      border-color: #0b56d0;
-      box-shadow: 0 0 8px rgba(11, 86, 208, 0.25);
+      border-color: #5c6bc0;
+      box-shadow: 0 0 8px rgba(92, 107, 192, 0.25);
       background: #fff;
     }
 
@@ -80,9 +80,9 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #0b56d0;
+      color: #5c6bc0;
       font-size: 1em;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     .toggle-password {
@@ -91,7 +91,7 @@
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
-      color: #0b56d0;
+      color: #5c6bc0;
       font-size: 1em;
     }
 
@@ -99,7 +99,7 @@
       width: 100%;
       padding: 14px;
       border: none;
-      background: linear-gradient(90deg, #0b56d0, #1d7af2);
+      background: linear-gradient(90deg, #5c6bc0, #1e88e5);
       color: #fff;
       font-size: 1.1em;
       font-weight: 600;
@@ -107,11 +107,11 @@
       cursor: pointer;
       transition: 0.3s ease;
       text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(11, 86, 208, 0.25);
+      box-shadow: 0 4px 12px rgba(92, 107, 192, 0.25);
     }
 
     .btn-submit:hover {
-      background: linear-gradient(90deg, #0948b0, #0b56d0);
+      background: linear-gradient(90deg, #4a5bb0, #166ed6);
       transform: translateY(-2px);
     }
 
@@ -119,14 +119,14 @@
       display: block;
       margin-top: 20px;
       font-size: 0.95em;
-      color: #0b56d0;
+      color: #5c6bc0;
       text-decoration: none;
       transition: 0.3s;
     }
 
     .btn-return:hover {
       text-decoration: underline;
-      color: #063a8a;
+      color: #1e88e5;
     }
   </style>
 </head>
@@ -138,6 +138,7 @@
         <i class="fa-solid fa-user"></i>
         <input type="text" name="username" value="<?=html_escape($user['username']);?>" placeholder="Username" required>
       </div>
+
       <div class="form-group">
         <i class="fa-solid fa-envelope"></i>
         <input type="email" name="email" value="<?=html_escape($user['email']);?>" placeholder="Email" required>
