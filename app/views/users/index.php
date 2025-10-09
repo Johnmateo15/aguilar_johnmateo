@@ -253,8 +253,12 @@
               <td><?= html_escape($row['role']); ?></td>
             <?php endif; ?>
             <td>
-              <a href="<?= site_url('/users/update/'.$row['id']); ?>" class="btn-action btn-update">Update</a>
-              <a href="<?= site_url('/users/delete/'.$row['id']); ?>" class="btn-action btn-delete">Delete</a>
+              <?php if (!empty($logged_in_user) && ($logged_in_user['role'] ?? 'user') === 'admin'): ?>
+                <a href="<?= site_url('/users/update/'.$row['id']); ?>" class="btn-action btn-update">Update</a>
+                <a href="<?= site_url('/users/delete/'.$row['id']); ?>" class="btn-action btn-delete">Delete</a>
+              <?php else: ?>
+                <span class="text-muted">—</span>
+              <?php endif; ?>
             </td>
           </tr>
           <?php endforeach; ?>
