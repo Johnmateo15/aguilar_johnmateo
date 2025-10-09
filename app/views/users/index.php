@@ -146,6 +146,7 @@
       background: linear-gradient(90deg, #6a11cb, #2575fc);
       box-shadow: 0 3px 10px rgba(106, 17, 203, 0.3);
     }
+
     a.btn-update:hover {
       background: linear-gradient(90deg, #5a0fb5, #1e63e8);
     }
@@ -154,21 +155,26 @@
       background: linear-gradient(90deg, #ff416c, #ff4b2b);
       box-shadow: 0 3px 10px rgba(255, 65, 108, 0.3);
     }
+
     a.btn-delete:hover {
       background: linear-gradient(90deg, #e83e62, #e43a1e);
     }
 
+    /* Search bar adjusted */
     .search-form {
       display: flex;
       gap: 10px;
+      justify-content: flex-end;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .search-form input {
       border-radius: 8px;
       border: 1px solid #cfdaf5;
       padding: 10px;
-      flex: 1;
+      width: 280px; /* made shorter */
+      max-width: 100%;
     }
 
     .search-form button {
