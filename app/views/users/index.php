@@ -9,7 +9,7 @@
 
   <style>
     body {
-      background: linear-gradient(135deg, #e8f0ff, #f7fbff);
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       font-family: "Poppins", sans-serif;
       color: #333;
       min-height: 100vh;
@@ -22,14 +22,14 @@
       padding: 40px;
       background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 6px 25px rgba(0, 80, 200, 0.1);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
     }
 
     .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #e6ecf8;
+      border-bottom: 2px solid #eee;
       margin-bottom: 25px;
       padding-bottom: 15px;
       flex-wrap: wrap;
@@ -39,14 +39,16 @@
     .dashboard-header h2 {
       font-size: 1.8em;
       font-weight: 700;
-      color: #0b56d0;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
     .dashboard-header h2 i {
-      color: #0b56d0;
+      color: #6a11cb;
     }
 
     .header-buttons {
@@ -60,29 +62,30 @@
       padding: 10px 20px;
       border: none;
       border-radius: 10px;
-      background: linear-gradient(90deg, #0b56d0, #0948b0);
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
       color: #fff;
       font-weight: 600;
       transition: 0.3s;
-      box-shadow: 0 3px 10px rgba(11, 86, 208, 0.25);
+      box-shadow: 0 3px 12px rgba(106, 17, 203, 0.3);
       text-decoration: none;
     }
 
     .logout-btn:hover,
     .btn-create:hover {
-      background: #093d99;
+      background: linear-gradient(90deg, #5a0fb5, #1e63e8);
       transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(106, 17, 203, 0.4);
     }
 
     .user-status {
-      background: #f1f6ff;
-      border: 1px solid #d5e3ff;
+      background: #f4edff;
+      border: 1px solid #d9ccff;
       padding: 14px 18px;
       border-radius: 12px;
       margin-bottom: 25px;
-      color: #0b56d0;
+      color: #6a11cb;
       font-weight: 500;
-      box-shadow: 0 2px 6px rgba(11, 86, 208, 0.08);
+      box-shadow: 0 2px 6px rgba(106, 17, 203, 0.1);
     }
 
     .user-status.error {
@@ -92,10 +95,10 @@
     }
 
     .table-card {
-      background: #f9fbff;
+      background: #fafaff;
       border-radius: 15px;
       padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
 
     table {
@@ -105,7 +108,7 @@
     }
 
     th {
-      background: linear-gradient(90deg, #0b56d0, #0948b0);
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
       color: #fff;
       text-transform: uppercase;
       font-weight: 600;
@@ -119,11 +122,11 @@
       padding: 12px;
       border: none;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 60, 255, 0.05);
+      box-shadow: 0 2px 5px rgba(106, 17, 203, 0.05);
     }
 
     tr:hover td {
-      background: #eef4ff;
+      background: #f2f0ff;
       transition: 0.2s;
     }
 
@@ -136,22 +139,23 @@
       font-weight: 500;
       margin: 0 2px;
       display: inline-block;
+      transition: 0.3s;
     }
 
     a.btn-update {
-      background: linear-gradient(90deg, #0b56d0, #0948b0);
-      box-shadow: 0 3px 10px rgba(11, 86, 208, 0.25);
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      box-shadow: 0 3px 10px rgba(106, 17, 203, 0.3);
     }
     a.btn-update:hover {
-      background: #093d99;
+      background: linear-gradient(90deg, #5a0fb5, #1e63e8);
     }
 
     a.btn-delete {
-      background: linear-gradient(90deg, #d22d3d, #b31f2e);
-      box-shadow: 0 3px 10px rgba(210, 45, 61, 0.25);
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
+      box-shadow: 0 3px 10px rgba(255, 65, 108, 0.3);
     }
     a.btn-delete:hover {
-      background: #a51b29;
+      background: linear-gradient(90deg, #e83e62, #e43a1e);
     }
 
     .search-form {
@@ -168,18 +172,18 @@
     }
 
     .search-form button {
-      background: linear-gradient(90deg, #0b56d0, #0948b0);
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
       border: none;
       color: #fff;
       font-weight: 600;
       border-radius: 8px;
       padding: 8px 18px;
       transition: 0.3s;
-      box-shadow: 0 3px 8px rgba(11, 86, 208, 0.2);
+      box-shadow: 0 3px 8px rgba(106, 17, 203, 0.25);
     }
 
     .search-form button:hover {
-      background: #093d99;
+      background: linear-gradient(90deg, #5a0fb5, #1e63e8);
     }
 
     .pagination-container {
