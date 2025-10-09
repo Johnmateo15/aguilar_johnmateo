@@ -95,6 +95,13 @@ public function update($id)
 
     $logged_in_user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
+    // Only admins are allowed to access the update action
+    if (empty($logged_in_user) || ($logged_in_user['role'] ?? 'user') !== 'admin') {
+        // You can change this to redirect('/users') or set a flash message as needed
+        echo 'Access denied. Only admins can update users.';
+        return;
+    }
+
     // Fetch the user to be edited
     $user = $this->UsersModel->get_user_by_id($id);
     if (!$user) {
@@ -144,6 +151,17 @@ public function update($id)
     public function delete($id)
     {
         $this->call->model('UsersModel');
+        // Ensure session started and check role
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $logged_in_user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+        if (empty($logged_in_user) || ($logged_in_user['role'] ?? 'user') !== 'admin') {
+            echo 'Access denied. Only admins can delete users.';
+            return;
+        }
+
         if($this->UsersModel->delete($id)){
             redirect('/users');
         } else {
