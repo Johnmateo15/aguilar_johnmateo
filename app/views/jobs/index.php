@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Students Info</title>
+  <title>Employer Dashboard - Jobs</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -68,12 +68,6 @@
       margin-bottom: 25px;
       color: #000;
       font-weight: 500;
-    }
-
-    .user-status.error {
-      background: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
     }
 
     .table-card {
@@ -150,39 +144,6 @@
     .btn-create:hover {
       background: #333;
     }
-
-    .search-form {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .search-form input {
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      flex: 1;
-    }
-
-    .search-form button {
-      background: #000;
-      border: none;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 4px;
-      padding: 8px 18px;
-      transition: background-color 0.3s;
-    }
-
-    .search-form button:hover {
-      background: #333;
-    }
-
-    .pagination-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
@@ -190,8 +151,8 @@
   <div class="dashboard-container">
     <div class="dashboard-header">
       <h2>
-        <i class="fa-solid fa-graduation-cap"></i>
-        Job Seeker Dashboard
+        <i class="fa-solid fa-briefcase"></i>
+        Employer Dashboard - My Jobs
       </h2>
       <a href="<?= site_url('auth/logout'); ?>"><button class="logout-btn">Logout</button></a>
     </div>
@@ -200,14 +161,40 @@
       <div class="user-status">
         <strong>Welcome:</strong> <?= html_escape($logged_in_user['username']); ?>
       </div>
-    <?php else: ?>
-      <div class="user-status error">
-        Logged in user not found
-      </div>
     <?php endif; ?>
 
     <div class="table-card">
-      <p>Here you can view and manage your profile. For job listings, go to <a href="<?= site_url('jobs/seeker'); ?>">Job Listings</a>.</p>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Salary</th>
+            <th>Action</th>
+          </tr>
+          <?php foreach ($jobs as $job): ?>
+          <tr>
+            <td><?= html_escape($job['id']); ?></td>
+            <td><?= html_escape($job['title']); ?></td>
+            <td><?= html_escape(substr($job['description'], 0, 50)) . '...'; ?></td>
+            <td><?= html_escape($job['company']); ?></td>
+            <td><?= html_escape($job['location']); ?></td>
+            <td><?= html_escape($job['salary']); ?></td>
+            <td>
+              <a href="<?= site_url('/jobs/update/'.$job['id']); ?>" class="btn-action btn-update">Update</a>
+              <a href="<?= site_url('/jobs/delete/'.$job['id']); ?>" class="btn-action btn-delete">Delete</a>
+              <a href="<?= site_url('/applications'); ?>" class="btn-action" style="background: #28a745;">View Applications</a>
+            </td>
+          </tr>
+          <?php endforeach; ?>
+        </table>
+      </div>
+    </div>
+
+    <a href="<?= site_url('jobs/create'); ?>" class="btn-create">+ Post New Job</a>
   </div>
 </body>
 </html>

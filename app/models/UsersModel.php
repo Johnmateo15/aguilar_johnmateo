@@ -59,7 +59,7 @@ class UsersModel extends Model {
 
 
     public function page($q = '', $records_per_page = null, $page = null) {
- 
+
             if (is_null($page)) {
                 return $this->db->table('user')->get_all();
             } else {
@@ -70,7 +70,7 @@ class UsersModel extends Model {
                     ->or_like('username', '%'.$q.'%')
                     ->or_like('email', '%'.$q.'%')
                     ->or_like('role', '%'.$q.'%');
-                    
+
                 // Clone before pagination
                 $countQuery = clone $query;
 
@@ -83,5 +83,13 @@ class UsersModel extends Model {
                 return $data;
             }
         }
+
+    public function get_job_seekers() {
+        return $this->db->table($this->table)->where('role', 'job_seeker')->get_all();
+    }
+
+    public function get_employees() {
+        return $this->db->table($this->table)->where('role', 'employee')->get_all();
+    }
 
 }

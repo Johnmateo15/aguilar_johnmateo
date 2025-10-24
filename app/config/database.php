@@ -58,15 +58,16 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 
    $database['main'] = array(
-        'driver'	=> 'mysql',
-        'hostname'	=> 'sql12.freesqldatabase.com',
-        'port'		=> '3306',
-        'username'	=> 'sql12802030',
-        'password'	=> 'nDAfzl76wd',
-        'database'	=> 'sql12802030',
-        'charset'	=> 'utf8mb4',
-        'dbprefix'	=> '', // Optional for SQLite
-        'path'      => ''
+    'driver'	=> 'mysql',
+    'hostname'	=> 'localhost',
+    'port'		=> '3306',
+    'username'	=> 'root',
+    'password'	=> '',
+    'database'	=> 'job portal',
+    'charset'	=> 'utf8mb4',
+    'dbprefix'	=> '',
+    // Optional for SQLite
+    'path'      => ''
     );
 
 ?>

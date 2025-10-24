@@ -11,39 +11,33 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #dfe6ff, #f5eaff);
+      background: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      color: #000;
     }
 
     .form-card {
       width: 440px;
       padding: 40px 35px;
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(88, 86, 208, 0.15);
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      animation: fadeIn 0.7s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .form-card h1 {
-      background: linear-gradient(90deg, #6c1fe9ff, #1e88e5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       font-size: 2em;
       font-weight: 700;
       margin-bottom: 25px;
+      color: #000;
     }
 
     .form-group {
@@ -56,23 +50,21 @@
       width: 100%;
       padding: 12px 14px 12px 42px;
       font-size: 1em;
-      color: #333;
-      background: #f9f9ff;
-      border: 1px solid #cfd9eb;
-      border-radius: 10px;
+      color: #000;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       outline: none;
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease;
     }
 
     .form-group input:focus,
     .form-group select:focus {
-      border-color: #5c6bc0;
-      box-shadow: 0 0 8px rgba(92, 107, 192, 0.25);
-      background: #fff;
+      border-color: #000;
     }
 
     .form-group input::placeholder {
-      color: #888;
+      color: #999;
     }
 
     .form-group i {
@@ -80,9 +72,9 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #5c6bc0;
+      color: #000;
       font-size: 1em;
-      opacity: 0.85;
+      opacity: 0.8;
     }
 
     .toggle-password {
@@ -91,7 +83,7 @@
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
-      color: #5c6bc0;
+      color: #666;
       font-size: 1em;
     }
 
@@ -99,34 +91,31 @@
       width: 100%;
       padding: 14px;
       border: none;
-      background: linear-gradient(90deg, #5c6bc0, #1e88e5);
+      background: #000;
       color: #fff;
       font-size: 1.1em;
       font-weight: 600;
-      border-radius: 10px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: background-color 0.3s ease;
       text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(92, 107, 192, 0.25);
     }
 
     .btn-submit:hover {
-      background: linear-gradient(90deg, #4a5bb0, #166ed6);
-      transform: translateY(-2px);
+      background: #333;
     }
 
     .btn-return {
       display: block;
       margin-top: 20px;
       font-size: 0.95em;
-      color: #5c6bc0;
+      color: #000;
       text-decoration: none;
-      transition: 0.3s;
+      transition: text-decoration 0.3s;
     }
 
     .btn-return:hover {
       text-decoration: underline;
-      color: #1e88e5;
     }
   </style>
 </head>
@@ -138,7 +127,6 @@
         <i class="fa-solid fa-user"></i>
         <input type="text" name="username" value="<?=html_escape($user['username']);?>" placeholder="Username" required>
       </div>
-
       <div class="form-group">
         <i class="fa-solid fa-envelope"></i>
         <input type="email" name="email" value="<?=html_escape($user['email']);?>" placeholder="Email" required>

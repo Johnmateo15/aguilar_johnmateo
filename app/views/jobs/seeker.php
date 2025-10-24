@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Students Info</title>
+  <title>Job Listings</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -70,12 +70,6 @@
       font-weight: 500;
     }
 
-    .user-status.error {
-      background: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
-    }
-
     .table-card {
       background: #f9f9f9;
       border-radius: 4px;
@@ -118,37 +112,11 @@
       display: inline-block;
     }
 
-    a.btn-update {
-      background: #000;
+    a.btn-apply {
+      background: #28a745;
     }
-    a.btn-update:hover {
-      background: #333;
-    }
-
-    a.btn-delete {
-      background: #721c24;
-    }
-    a.btn-delete:hover {
-      background: #5a1419;
-    }
-
-    .btn-create {
-      display: inline-block;
-      padding: 12px 25px;
-      border: none;
-      background: #000;
-      color: #fff;
-      font-size: 1em;
-      border-radius: 4px;
-      font-weight: 600;
-      transition: background-color 0.3s;
-      text-transform: uppercase;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-
-    .btn-create:hover {
-      background: #333;
+    a.btn-apply:hover {
+      background: #218838;
     }
 
     .search-form {
@@ -190,8 +158,8 @@
   <div class="dashboard-container">
     <div class="dashboard-header">
       <h2>
-        <i class="fa-solid fa-graduation-cap"></i>
-        Job Seeker Dashboard
+        <i class="fa-solid fa-search"></i>
+        Job Listings
       </h2>
       <a href="<?= site_url('auth/logout'); ?>"><button class="logout-btn">Logout</button></a>
     </div>
@@ -200,14 +168,44 @@
       <div class="user-status">
         <strong>Welcome:</strong> <?= html_escape($logged_in_user['username']); ?>
       </div>
-    <?php else: ?>
-      <div class="user-status error">
-        Logged in user not found
-      </div>
     <?php endif; ?>
 
     <div class="table-card">
-      <p>Here you can view and manage your profile. For job listings, go to <a href="<?= site_url('jobs/seeker'); ?>">Job Listings</a>.</p>
+      <form action="<?= site_url('jobs/seeker'); ?>" method="get" class="search-form">
+        <?php $q = isset($_GET['q']) ? $_GET['q'] : ''; ?>
+        <input name="q" type="text" class="form-control" placeholder="Search jobs..." value="<?= html_escape($q); ?>">
+        <button type="submit"><i class="fa fa-search"></i> Search</button>
+      </form>
+
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Salary</th>
+            <th>Action</th>
+          </tr>
+          <?php foreach ($jobs as $job): ?>
+          <tr>
+            <td><?= html_escape($job['title']); ?></td>
+            <td><?= html_escape(substr($job['description'], 0, 100)) . '...'; ?></td>
+            <td><?= html_escape($job['company']); ?></td>
+            <td><?= html_escape($job['location']); ?></td>
+            <td><?= html_escape($job['salary']); ?></td>
+            <td>
+              <a href="<?= site_url('/applications/apply/'.$job['id']); ?>" class="btn-action btn-apply">Apply</a>
+            </td>
+          </tr>
+          <?php endforeach; ?>
+        </table>
+      </div>
+
+      <div class="pagination-container">
+        <?php echo $page; ?>
+      </div>
+    </div>
   </div>
 </body>
 </html>

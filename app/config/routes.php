@@ -59,3 +59,15 @@ $router->get('/users/dashboard', 'UsersController::dashboard');
 $router->match('/users/create', 'UsersController::create', ['GET', 'POST']);
 $router->match('/users/update/{id}', 'UsersController::update', ['GET', 'POST']);
 $router->get('/users/delete/{id}', 'UsersController::delete');
+
+// Jobs routes
+$router->get('/jobs', 'JobsController::index');
+$router->get('/jobs/seeker', 'JobsController::seeker');
+$router->match('/jobs/create', 'JobsController::create', ['GET', 'POST']);
+$router->match('/jobs/update/{id}', 'JobsController::update', ['GET', 'POST']);
+$router->get('/jobs/delete/{id}', 'JobsController::delete');
+
+// Applications routes
+$router->get('/applications', 'ApplicationsController::index');
+$router->get('/applications/apply/{job_id}', 'ApplicationsController::apply');
+$router->get('/applications/update_status/{id}/{status}', 'ApplicationsController::update_status');

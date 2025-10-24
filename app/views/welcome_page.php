@@ -14,24 +14,24 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-            background: #f8fafc;
-            color: #334155;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #000;
         }
 
         .container {
             max-width: 960px;
             margin: 3rem auto;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
         .header {
-            background: #3B82F6; /* lighter blue */
-            color: #ffffff;
+            background: #000;
+            color: #fff;
             padding: 2rem;
             text-align: center;
         }
@@ -46,7 +46,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         }
 
         h2 {
-            color: #1e40af;
+            color: #000;
             margin-top: 2rem;
         }
 
@@ -57,12 +57,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
         code, pre {
             display: block;
-            background: #f1f5f9;
+            background: #f9f9f9;
             padding: 1rem;
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid #000;
             margin-bottom: 1rem;
             font-size: 0.9rem;
-            color: #1e293b;
+            color: #000;
             overflow-x: auto;
         }
 
@@ -76,7 +76,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         }
 
         a {
-            color: #2563eb;
+            color: #000;
             text-decoration: none;
         }
 
@@ -88,8 +88,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             font-size: 0.9rem;
             text-align: center;
             padding: 1rem;
-            background: #f1f5f9;
-            border-top: 1px solid #e2e8f0;
+            background: #f9f9f9;
+            border-top: 1px solid #ddd;
         }
 
         .grid {
@@ -99,15 +99,15 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         }
 
         .card {
-            background: #f8fafc;
+            background: #f9f9f9;
             padding: 1rem;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
         }
 
         .card h3 {
             margin-top: 0;
-            color: #0f172a;
+            color: #000;
         }
     </style>
 </head>

@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body {
@@ -19,30 +19,18 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      background: #fff;
+      color: #000;
     }
 
     .create-user {
       width: 420px;
       padding: 40px;
-      backdrop-filter: blur(20px);
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-      animation: fadeIn 0.8s ease;
-      color: #fff;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      color: #000;
     }
 
     .create-user h2 {
@@ -50,7 +38,7 @@
       font-size: 2em;
       font-weight: 600;
       margin-bottom: 25px;
-      color: #fff;
+      color: #000;
     }
 
     .inputBox {
@@ -61,42 +49,38 @@
       width: 100%;
       padding: 14px 15px;
       font-size: 1em;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 10px;
+      color: #000;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       outline: none;
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease;
     }
 
     .inputBox input:focus {
-      border-color: #fff;
-      background: rgba(255, 255, 255, 0.2);
+      border-color: #000;
     }
 
     .inputBox input::placeholder {
-      color: #e5e7eb;
+      color: #999;
     }
 
     button {
       width: 100%;
       padding: 14px;
       border: none;
-      background: linear-gradient(135deg, #2563eb, #9333ea);
+      background: #000;
       color: #fff;
       font-size: 1.1em;
       font-weight: 600;
-      border-radius: 10px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: background-color 0.3s ease;
       text-transform: uppercase;
-      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
     }
 
     button:hover {
-      background: linear-gradient(135deg, #1d4ed8, #7e22ce);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background: #333;
     }
 
     .link-wrapper {
@@ -106,10 +90,10 @@
 
     .link-wrapper a {
       font-size: 0.95em;
-      color: #fff;
+      color: #000;
       font-weight: 500;
       text-decoration: none;
-      transition: 0.3s;
+      transition: text-decoration 0.3s;
     }
 
     .link-wrapper a:hover {

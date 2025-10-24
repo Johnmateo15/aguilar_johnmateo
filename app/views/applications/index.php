@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Students Info</title>
+  <title>Job Applications</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -70,12 +70,6 @@
       font-weight: 500;
     }
 
-    .user-status.error {
-      background: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
-    }
-
     .table-card {
       background: #f9f9f9;
       border-radius: 4px;
@@ -118,25 +112,26 @@
       display: inline-block;
     }
 
-    a.btn-update {
-      background: #000;
+    a.btn-accept {
+      background: #28a745;
     }
-    a.btn-update:hover {
-      background: #333;
+    a.btn-accept:hover {
+      background: #218838;
     }
 
-    a.btn-delete {
+    a.btn-reject {
       background: #721c24;
     }
-    a.btn-delete:hover {
+    a.btn-reject:hover {
       background: #5a1419;
     }
 
-    .btn-create {
+    .btn-back {
       display: inline-block;
-      padding: 12px 25px;
+      margin-top: 20px;
+      padding: 10px 20px;
       border: none;
-      background: #000;
+      background: #666;
       color: #fff;
       font-size: 1em;
       border-radius: 4px;
@@ -144,44 +139,10 @@
       transition: background-color 0.3s;
       text-transform: uppercase;
       text-decoration: none;
-      margin-top: 20px;
     }
 
-    .btn-create:hover {
-      background: #333;
-    }
-
-    .search-form {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .search-form input {
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      flex: 1;
-    }
-
-    .search-form button {
-      background: #000;
-      border: none;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 4px;
-      padding: 8px 18px;
-      transition: background-color 0.3s;
-    }
-
-    .search-form button:hover {
-      background: #333;
-    }
-
-    .pagination-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
+    .btn-back:hover {
+      background: #555;
     }
   </style>
 </head>
@@ -190,8 +151,8 @@
   <div class="dashboard-container">
     <div class="dashboard-header">
       <h2>
-        <i class="fa-solid fa-graduation-cap"></i>
-        Job Seeker Dashboard
+        <i class="fa-solid fa-clipboard-list"></i>
+        Job Applications
       </h2>
       <a href="<?= site_url('auth/logout'); ?>"><button class="logout-btn">Logout</button></a>
     </div>
@@ -200,14 +161,37 @@
       <div class="user-status">
         <strong>Welcome:</strong> <?= html_escape($logged_in_user['username']); ?>
       </div>
-    <?php else: ?>
-      <div class="user-status error">
-        Logged in user not found
-      </div>
     <?php endif; ?>
 
     <div class="table-card">
-      <p>Here you can view and manage your profile. For job listings, go to <a href="<?= site_url('jobs/seeker'); ?>">Job Listings</a>.</p>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <tr>
+            <th>Job Title</th>
+            <th>Applicant</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Applied At</th>
+            <th>Action</th>
+          </tr>
+          <?php foreach ($applications as $app): ?>
+          <tr>
+            <td><?= html_escape($app['job_title']); ?></td>
+            <td><?= html_escape($app['username']); ?></td>
+            <td><?= html_escape($app['email']); ?></td>
+            <td><?= html_escape($app['status']); ?></td>
+            <td><?= html_escape($app['applied_at']); ?></td>
+            <td>
+              <a href="<?= site_url('/applications/update_status/'.$app['id'].'/accepted'); ?>" class="btn-action btn-accept">Accept</a>
+              <a href="<?= site_url('/applications/update_status/'.$app['id'].'/rejected'); ?>" class="btn-action btn-reject">Reject</a>
+            </td>
+          </tr>
+          <?php endforeach; ?>
+        </table>
+      </div>
+    </div>
+
+    <a href="<?= site_url('jobs'); ?>" class="btn-back">Back to Jobs</a>
   </div>
 </body>
 </html>
