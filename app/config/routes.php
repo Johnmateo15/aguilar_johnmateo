@@ -71,3 +71,19 @@ $router->get('/jobs/delete/{id}', 'JobsController::delete');
 $router->get('/applications', 'ApplicationsController::index');
 $router->get('/applications/apply/{job_id}', 'ApplicationsController::apply');
 $router->get('/applications/update_status/{id}/{status}', 'ApplicationsController::update_status');
+
+// Admin module
+$router->get('/admin', 'AdminController::dashboard');
+$router->get('/admin/dashboard', 'AdminController::dashboard');
+$router->get('/admin/users', 'AdminController::users');
+$router->get('/admin/categories', 'AdminController::categories');
+$router->get('/admin/approvals', 'AdminController::approvals');
+$router->get('/admin/reports', 'AdminController::reports');
+
+// Employer module
+$router->match('/employer/profile', 'EmployerController::profile', ['GET','POST']);
+
+// Applicant module
+$router->get('/applicant', 'ApplicantController::profile');
+$router->match('/applicant/account', 'ApplicantController::account', ['GET','POST']);
+$router->get('/applicant/profile', 'ApplicantController::profile');
