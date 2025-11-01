@@ -34,7 +34,11 @@
         </a>
         <a href="/applications" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-green-50 hover:text-green-700 transition-all duration-200 <?php echo ($u && $u['role']==='employee') ? 'text-slate-700' : 'hidden'; ?>">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4h4m-6 4h8M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3"/></svg>
-            <span class="font-medium">Applicants</span>
+            <span class="font-medium">Applications</span>
+        </a>
+        <a href="/employer/profile" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-green-50 hover:text-green-700 transition-all duration-200 <?php echo ($u && $u['role']==='employee') ? 'text-slate-700' : 'hidden'; ?>">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M15 11a3 3 0 10-6 0 3 3 0 006 0z"/></svg>
+            <span class="font-medium">Profile</span>
         </a>
 
         <a href="/jobs/seeker" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-purple-50 hover:text-purple-700 transition-all duration-200 <?php echo ($u && $u['role']==='job_seeker') ? 'text-purple-700 bg-purple-50' : 'hidden'; ?>">

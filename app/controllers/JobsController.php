@@ -25,7 +25,8 @@ class JobsController extends Controller {
         $data['jobs'] = $this->JobsModel->get_jobs_by_employee($employee_id);
         $data['logged_in_user'] = $_SESSION['user'];
 
-        $this->call->view('jobs/index', $data);
+        // Use the new employer/jobs view with Tailwind layout
+        $this->call->view('employer/jobs', $data);
     }
 
     public function seeker()
@@ -69,8 +70,33 @@ class JobsController extends Controller {
         $data['page'] = $this->pagination->paginate();
 
         $data['logged_in_user'] = $_SESSION['user'];
+        
+        // Check if user has resume
+        $this->call->model('UsersModel');
+        $user = $this->UsersModel->get_user_by_id($_SESSION['user']['id']);
+        $data['has_resume'] = $this->check_user_resume($_SESSION['user']['id']);
 
         $this->call->view('jobs/seeker', $data);
+    }
+
+    private function check_user_resume($user_id)
+    {
+        // Check if user has resume in any previous application
+        $applications = $this->ApplicationsModel->get_applications_by_user($user_id);
+        foreach ($applications as $app) {
+            if (!empty($app['resume_path']) && file_exists($app['resume_path'])) {
+                return true;
+            }
+        }
+        
+        // Also check user table if resume_path field exists
+        $this->call->model('UsersModel');
+        $user = $this->UsersModel->get_user_by_id($user_id);
+        if (isset($user['resume_path']) && !empty($user['resume_path']) && file_exists($user['resume_path'])) {
+            return true;
+        }
+        
+        return false;
     }
 
     public function create()
